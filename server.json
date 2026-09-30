@@ -1,0 +1,34 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "de.analytixus/analytixus-mcp",
+  "title": "Analytixus",
+  "description": "Analytixus DnAML repository access (read/write nodes, tree navigation, solutions) via MCP.",
+  "repository": {
+    "url": "https://github.com/andyloewen78/analytixus-mcp",
+    "source": "github"
+  },
+  "websiteUrl": "https://analytixus.de",
+  "icons": [
+    {
+      "src": "https://analytixus.de/wp-content/uploads/2026/09/Analytixus-icon-light.png",
+      "mimeType": "image/png",
+      "theme": "light"
+    },
+    {
+      "src": "https://analytixus.de/wp-content/uploads/2026/09/Analytixus-icon-dark.png",
+      "mimeType": "image/png",
+      "theme": "dark"
+    }
+  ],
+  "version": "0.8.3",
+  "packages": [
+    {
+      "registryType": "nuget",
+      "identifier": "Analytixus.Mcp",
+      "version": "0.8.3",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}
