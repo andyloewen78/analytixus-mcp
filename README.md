@@ -68,7 +68,8 @@ extracted `Analytixus.Mcp` executable as `command`.)
    VS Code adds an entry to your user-level `mcp.json` automatically — but without the required
    environment variables yet.
 
-2. Open `mcp.json` and add the `env` key to the installed entry:
+2. Open `mcp.json` and add an `env` key to the installed entry — leave `command`, `args`,
+   `gallery`, and `version` exactly as VS Code wrote them:
    - Windows: `%APPDATA%\Code\User\mcp.json`
    - macOS: `~/Library/Application Support/Code/User/mcp.json`
    - Linux: `~/.config/Code/User/mcp.json`
@@ -79,7 +80,9 @@ extracted `Analytixus.Mcp` executable as `command`.)
        "de.analytixus/analytixus-mcp": {
          "type": "stdio",
          "command": "dnx",
-         "args": ["Analytixus.Mcp", "--yes"],
+         "args": ["Analytixus.Mcp@0.8.3", "--yes"],
+         "gallery": "https://api.mcp.github.com",
+         "version": "0.8.3",
          "env": {
            "ANALYTIXUS_SOLUTION_PATH": "/path/to/your/dnaml-solution",
            "ANALYTIXUS_SOLUTION_NAME": "YourSolutionName"
@@ -88,6 +91,8 @@ extracted `Analytixus.Mcp` executable as `command`.)
      }
    }
    ```
+
+   (The version number in `args` and `version` is whatever VS Code installed — keep it as-is.)
 
 **Option B — manual config** (install the .NET global tool first:
 `dotnet tool install --global Analytixus.Mcp`):
