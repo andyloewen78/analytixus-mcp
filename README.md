@@ -59,7 +59,64 @@ Add to `claude_desktop_config.json`:
 (If you installed the self-contained archive instead of the .NET tool, use the full path to the
 extracted `Analytixus.Mcp` executable as `command`.)
 
-### VS Code / Claude Code
+### VS Code (Copilot Chat)
+
+**Option A — via the MCP Servers gallery (recommended):**
+
+1. Open the Extensions panel (Ctrl+Shift+X), switch to the **MCP Servers** tab, search for
+   *Analytixus*, and click **Install + Enable**.  
+   VS Code adds an entry to your user-level `mcp.json` automatically — but without the required
+   environment variables yet.
+
+2. Open `mcp.json` and add the `env` key to the installed entry:
+   - Windows: `%APPDATA%\Code\User\mcp.json`
+   - macOS: `~/Library/Application Support/Code/User/mcp.json`
+   - Linux: `~/.config/Code/User/mcp.json`
+
+   ```json
+   {
+     "servers": {
+       "de.analytixus/analytixus-mcp": {
+         "type": "stdio",
+         "command": "dnx",
+         "args": ["Analytixus.Mcp", "--yes"],
+         "env": {
+           "ANALYTIXUS_SOLUTION_PATH": "/path/to/your/dnaml-solution",
+           "ANALYTIXUS_SOLUTION_NAME": "YourSolutionName"
+         }
+       }
+     }
+   }
+   ```
+
+**Option B — manual config** (install the .NET global tool first:
+`dotnet tool install --global Analytixus.Mcp`):
+
+Add to `mcp.json`:
+
+```json
+{
+  "servers": {
+    "analytixus": {
+      "type": "stdio",
+      "command": "analytixus-mcp",
+      "args": ["--stdio"],
+      "env": {
+        "ANALYTIXUS_SOLUTION_PATH": "/path/to/your/dnaml-solution",
+        "ANALYTIXUS_SOLUTION_NAME": "YourSolutionName"
+      }
+    }
+  }
+}
+```
+
+### Roo Code / Cline / other VS Code AI extensions
+
+These extensions manage their own MCP server lists independently of VS Code's built-in `mcp.json`.
+Open each extension's MCP settings and add a server entry with `command: analytixus-mcp`,
+`args: ["--stdio"]`, and the same `env` variables shown above.
+
+### Claude Code (CLI)
 
 ```bash
 claude mcp add --env ANALYTIXUS_SOLUTION_PATH=/path/to/your/dnaml-solution \
