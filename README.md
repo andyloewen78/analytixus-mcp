@@ -14,6 +14,9 @@ your metadata model directly.
 ## What it does
 
 - **Browse the repository tree** — list solutions, sources, and objects in a DnAML model.
+- **Search the repository** — find nodes by name or type, or by DnAML content and sections
+  (columns, origins, references, documentation, load, consumers); results keep their parent
+  context. Use `maxDepth` on the tree tool to keep large repositories manageable.
 - **Read and write DnAML nodes** — fetch a single object's definition, create or update objects
   under a source or folder.
 - **Solution management** — list available solutions, add/rename/delete them.
@@ -80,9 +83,9 @@ extracted `Analytixus.Mcp` executable as `command`.)
        "de.analytixus/analytixus-mcp": {
          "type": "stdio",
          "command": "dnx",
-         "args": ["Analytixus.Mcp@0.8.3", "--yes"],
+         "args": ["Analytixus.Mcp@0.8.4", "--yes"],
          "gallery": "https://api.mcp.github.com",
-         "version": "0.8.3",
+         "version": "0.8.4",
          "env": {
            "ANALYTIXUS_SOLUTION_PATH": "/path/to/your/dnaml-solution",
            "ANALYTIXUS_SOLUTION_NAME": "YourSolutionName"
