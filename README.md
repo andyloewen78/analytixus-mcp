@@ -83,9 +83,9 @@ extracted `Analytixus.Mcp` executable as `command`.)
        "de.analytixus/analytixus-mcp": {
          "type": "stdio",
          "command": "dnx",
-         "args": ["Analytixus.Mcp@0.8.4", "--yes"],
+         "args": ["Analytixus.Mcp@0.8.5", "--yes"],
          "gallery": "https://api.mcp.github.com",
-         "version": "0.8.4",
+         "version": "0.8.5",
          "env": {
            "ANALYTIXUS_SOLUTION_PATH": "/path/to/your/dnaml-solution",
            "ANALYTIXUS_SOLUTION_NAME": "YourSolutionName"
@@ -139,6 +139,24 @@ claude mcp add --env ANALYTIXUS_SOLUTION_PATH=/path/to/your/dnaml-solution \
 | `ANALYTIXUS_SOLUTION_PATH` | Path to the DnAML solution's root folder. |
 | `ANALYTIXUS_SOLUTION_NAME` | Name of the solution — pins this server instance to it. |
 | `ANALYTIXUS_LOG_LEVEL` | `Trace`\|`Debug`\|`Info`\|`Warn`\|`Error`\|`Fatal` (default `Info`). |
+
+## Tools
+
+| Tool | Purpose |
+|---|---|
+| `solutions_list` | Registered solutions (only the pinned one when `ANALYTIXUS_SOLUTION_*` is set) |
+| `repository_get_tree` | Repository tree of a solution. Use `maxDepth` (e.g. `1`) on large repositories to limit output |
+| `repository_search` | Search nodes by name and/or node type; returns a hierarchical result including parents |
+| `repository_search_content` | Search by DnAML content (`text`) and/or section presence (`hasColumns`, `hasOrigins`, `hasReferences`, `hasDocumentation`, `hasLoad`, `hasConsumers`); each hit reports why it matched |
+| `repository_read_node`, `repository_read_node_recursive` | Read a node (or a node with all descendants) as DnAML or XML |
+| `repository_write_node` | Validate and write DnAML to an existing node (renames are detected) |
+| `repository_add_folder`, `repository_add_source`, `repository_add_node_under_folder`, `repository_add_node_under_source` | Create folders, sources and nodes |
+| `repository_delete_node`, `repository_delete_folder_recursive`, `repository_delete_source_recursive` | Delete (irreversible) |
+| `get_dnaml_reference` | DnAML syntax reference |
+| `solution_add`, `solution_delete`, `solution_rename` | Solution management — only exposed when the server is **not** pinned to one solution |
+
+Logs are written to `logs/` next to the tool. In `--stdio` mode stderr only receives `Warn` and
+above (never stdout — that is the JSON-RPC channel).
 
 ## Learn more
 
