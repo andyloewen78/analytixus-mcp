@@ -1,6 +1,6 @@
 # Analytixus MCP Server
 
-Analytixus is a metadata-driven development platform built around **DnAML** (Data and Analytics
+[Analytixus](https://analytixus.de) is a metadata-driven development platform built around **DnAML** (Data and Analytics
 Markup Language) — you model your data sources, transformations, and documentation once, and
 generate SQL, pipelines, and docs from that single model instead of maintaining them by hand.
 
